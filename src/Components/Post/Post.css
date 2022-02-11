@@ -1,0 +1,49 @@
+
+.post-wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 75%;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.post {
+    border: 2px solid #CEE3F8;
+    padding: 5px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-evenly;
+    border-radius: 10px;
+    max-width: 640px;
+}
+
+.post-bar {
+    display: flex;
+    gap: 5px;
+    
+    justify-content: flex-end;
+}
+
+.post-bar a{
+    text-decoration: none;
+    color: inherit;
+}
+
+
+.post-img {
+    min-height: 250px;
+    height: auto;
+    width: 65%;
+}
+
+.vote {
+    display:flex;
+    gap: 10px;
+    flex-direction: column;
+    height: 100%;
+}
+
+.downvote {
+    transform: rotate(180deg);
+}

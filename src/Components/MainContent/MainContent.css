@@ -1,0 +1,11 @@
+.MainContent {
+    
+    display: flex;
+    flex-grow: 3;
+    align-items: center;    
+    flex-direction: column;
+}
+
+.post-wrapper {
+    min-width: 640px;
+}
