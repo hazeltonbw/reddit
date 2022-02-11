@@ -10,6 +10,10 @@ export default function MainContent() {
             <main className="post-wrapper">
                 <Post image={image1} />
                 <Post image={image2} />
+                <Post image={image2} />
+                <Post image={image2} />
+                <Post image={image2} />
+                <Post image={image2} />
             </main>
         </div>
     )
