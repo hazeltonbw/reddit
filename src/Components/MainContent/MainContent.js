@@ -1,19 +1,40 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./MainContent.css";
-import  image1 from "../../images/sample-card-image.webp";
-import  image2 from "../../images/test-mountain-photo.webp";
 import Post from "../Post/Post";
 
 export default function MainContent() {
+    const [posts, setPosts] = useState([]);
+
+    const fetchData = async () => {
+        let posts, jsonPosts;
+        try {
+            posts = await fetch('https://www.reddit.com/r/popular.json');
+            if (posts.ok) {
+                //console.log("ok");
+                jsonPosts = await posts.json();
+                //console.log(jsonPosts.data.children)
+                setPosts(jsonPosts.data.children);
+            }
+            else {
+                console.log("something went wrong")
+            }
+        } catch(err){
+            console.log(err);
+        }
+    }
+    useEffect(() => {
+        fetchData();
+    }, [])
     return (
         <div className="MainContent">
-            <main className="post-wrapper">
-                <Post image={image1} />
-                <Post image={image2} />
-                <Post image={image2} />
-                <Post image={image2} />
-                <Post image={image2} />
-                <Post image={image2} />
+            <main>
+                <section>
+                    {
+                    posts.map((post) => {
+                        return <Post data={post.data}/>
+                    })
+                    }
+                </section>
             </main>
         </div>
     )

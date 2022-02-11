@@ -7,7 +7,7 @@ export function Header() {
     return (
         <div className='Header'>
             <header>
-                <Link className="main-link" to="/"><img src={logo} alt="some logo"> 
+                <Link className="main-link" to="/"><img className="logo" src={logo} alt="some logo"> 
                 </img>
                 <h1>reddit minimal</h1>
                 </Link>

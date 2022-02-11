@@ -8,10 +8,9 @@ function App() {
     <div className="App">
       <Header />
       <div className="container">
-      <SideBar />
-      
+        <SideBar />
         <MainContent />
-        </div>
+      </div>
       <footer>Made with <span class="heart">&#10084;</span> by Brandon Hazelton &nbsp; &copy; 2021</footer>
     </div>
   );

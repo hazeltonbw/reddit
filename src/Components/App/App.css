@@ -1,23 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+:root {
+  --sep: rgb(200,200,200);
+}
+
 .App {
-  text-align: center;
   height: 100%;
   display: flex;
+  font-family: "Roboto", sans-serif;
   flex-direction: column;
-  background-color: #eef5fd;
+  background-color: #c5d3e1;
 }
 
 .container {
   display: flex;
   width: 100%;
-  margin: 10px 10px;
 }
 
 .heart {
   color: red;
+}
+
+footer {
+  text-align: center;
 }
