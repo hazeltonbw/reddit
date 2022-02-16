@@ -19,7 +19,7 @@ function format(n) {
 }
 
 export default function Post({data}) {
-    //console.log(data)
+    console.log(data)
     return (
         <article className="post">
             <div className="vote">
@@ -43,7 +43,7 @@ export default function Post({data}) {
             <div className="more-info">
                 <img src={upvote} alt="Upvote" className='upvote upvote-secondary'/>
                 <span className='upvote-secondary score'>{format(data.score)}</span>
-            <a href="#">{format(data.num_comments)}</a><span>&nbsp;Comments</span>
+            <a href={"https://www.reddit.com" + data.permalink}>{format(data.num_comments)}</a><span>&nbsp;Comments</span>
             </div>
                 
             </div>
