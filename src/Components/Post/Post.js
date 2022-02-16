@@ -36,7 +36,7 @@ export default function Post({data}) {
                     <a href={"https://www.reddit.com/user/"+data.author}>{data.author}</a>
                     <span className="sep"></span>
                     <span>{moment.unix(data.created_utc).fromNow()}</span>
-                    <h4 className='post-title'>{data.title}</h4>
+                    <h3 className='post-title'>{data.title}</h3>
                 <img src={data.url} alt="" className='post-img'/>
             </div>
 
