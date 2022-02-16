@@ -93,4 +93,7 @@
     .vote {
         display: none;
     }
+    .score {
+        margin: 0;
+    }
 }
