@@ -70,8 +70,8 @@
     margin-top: 5px;
 }
 .upvote-secondary.score {
-    margin-left: 10px;
-    margin-right: 20px;
+    margin-left: 3px;
+    margin-right: 10px;
 }
 
 .upvote {
@@ -88,6 +88,10 @@
 @media (max-width: 640px) {
     .upvote-secondary {
         display: unset;
+    }
+
+    .upvote {
+        margin: 0;
     }
 
     .vote {
