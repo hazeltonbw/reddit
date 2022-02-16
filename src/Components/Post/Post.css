@@ -1,12 +1,26 @@
 .post {
-    width: 640px;
     display: flex;
     border: 1px solid rgb(129, 131, 132);
-    margin: 5px;
+    margin-bottom: 10px;
     border-radius: 0.4rem;
     box-shadow: rgb(129, 131, 132);
-    background-color: #a0c6eb;
+    background-color: #ffffff;
+    max-width: 594px;
 }
+
+.post-title {
+    padding: 5px;
+}
+
+.post a {
+    width: fit-content;
+}
+.content {
+    display: flex;
+    max-width: 100%;
+    flex-direction: column;
+}
+
 .post-info {
     margin: 5px;
 }
@@ -20,22 +34,41 @@
     font-size: .9rem;
 }
 .post-img {
-    max-height:512px;
+    display: block;
+    max-height: fit-content;
     max-width: 594px;
+    width: 50%;
     margin: 0px auto;
 }
 .vote {
     display: flex;
+    background-color: #fdebe5;
+    border-radius: 5px;
     text-align: center;
+    align-self: stretch;
+    padding: 5px;
     flex-direction: column;
-    height: 100%;
-    margin: 5px;
 }
 
-.content {
-    display: flex;
-    width: 100%;
-    flex-direction: column;
+.vote img {
+    margin: 0 auto;
+}
+
+.more-info {
+    display: inline-flex;
+    justify-content: center;
+    padding: 5px;
+    align-items: center;
+    width: fit-content;
+}
+
+.upvote-secondary {
+    display: none;
+}
+
+.upvote-secondary.score {
+    margin-left: 10px;
+    margin-right: 20px;
 }
 
 .upvote {
@@ -46,4 +79,14 @@
 .sep {
     margin: 0 3px;
     color: var(sep);
+}
+
+@media (max-width: 640px) {
+    .upvote-secondary {
+        display: unset;
+    }
+
+    .vote {
+        display: none;
+    }
 }

@@ -12,7 +12,7 @@ export default function Post({data}) {
         <article className="post">
             <div className="vote">
                 <img src={upvote} alt="Upvote" className='upvote'/>
-                {data.num_comments}
+                {data.score}
             </div>
             <div className="content">
                 <div className="post-info">
@@ -24,10 +24,16 @@ export default function Post({data}) {
                     <a href={"https://www.reddit.com/user/"+data.author}>{data.author}</a>
                     <span className="sep"></span>
                     <span>{moment.unix(data.created_utc).fromNow()}</span>
-                    <br />
-                    <h4>{data.title}</h4>
-                </div>
+                    <h4 className='post-title'>{data.title}</h4>
                 <img src={data.url} alt="" className='post-img'/>
+            </div>
+
+            <div className="more-info">
+                <img src={upvote} alt="Upvote" className='upvote upvote-secondary'/>
+                <span className='upvote-secondary score'>{data.score}</span>
+            <a href="#">{data.num_comments}</a><span>&nbsp;Comments</span>
+            </div>
+                
             </div>
         </article>
     )

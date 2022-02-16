@@ -26,16 +26,14 @@ export default function MainContent() {
         fetchData();
     }, [])
     return (
-        <div className="MainContent">
-            <main>
-                <section>
-                    {
-                    posts.map((post) => {
-                        return <Post data={post.data}/>
-                    })
-                    }
-                </section>
-            </main>
-        </div>
+        <main className="main">
+            <section className="posts">
+                {
+                posts.map((post) => {
+                    return <Post data={post.data}/>
+                })
+                }
+            </section>
+        </main>
     )
 }

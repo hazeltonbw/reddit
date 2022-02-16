@@ -3,9 +3,9 @@ header {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #a0c6eb;
+    background-color: #fff;
     color: white;
-    height: 120px;
+    height: 60px;
 }
 
 .logo {
