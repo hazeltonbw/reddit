@@ -1,6 +1,5 @@
 .sidebar-container {
     padding: 20px 20px 0px 0px;
-    /* flex: 1; */
 }
 
 .sidebar {
@@ -12,6 +11,8 @@
     overflow-y: auto;
     border-radius: 0.4rem;
     background-color: #fff;
+    position: sticky;
+    top: 0;
 }
 
 .sidebar h3 {
