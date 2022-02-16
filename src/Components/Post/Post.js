@@ -3,16 +3,28 @@ import "./Post.css";
 import moment from 'moment';
 import upvote from "../../images/Upvote.svg";
 
-import { Link } from "react-router-dom";
+var pow = Math.pow, floor = Math.floor, abs = Math.abs, log = Math.log;
+var abbrev = 'kmb'; 
 
+function round(n, precision) {
+    var prec = Math.pow(10, precision);
+    return Math.round(n*prec)/prec;
+}
+
+function format(n) {
+    var base = floor(log(abs(n))/log(1000));
+    var suffix = abbrev[Math.min(2, base - 1)];
+    base = abbrev.indexOf(suffix) + 1;
+    return suffix ? round(n/pow(1000,base),1)+suffix : ''+n;
+}
 
 export default function Post({data}) {
-    console.log(data)
+    //console.log(data)
     return (
         <article className="post">
             <div className="vote">
                 <img src={upvote} alt="Upvote" className='upvote'/>
-                {data.score}
+                <span className='score'>{format(data.score)}</span>
             </div>
             <div className="content">
                 <div className="post-info">
@@ -30,8 +42,8 @@ export default function Post({data}) {
 
             <div className="more-info">
                 <img src={upvote} alt="Upvote" className='upvote upvote-secondary'/>
-                <span className='upvote-secondary score'>{data.score}</span>
-            <a href="#">{data.num_comments}</a><span>&nbsp;Comments</span>
+                <span className='upvote-secondary score'>{format(data.score)}</span>
+            <a href="#">{format(data.num_comments)}</a><span>&nbsp;Comments</span>
             </div>
                 
             </div>

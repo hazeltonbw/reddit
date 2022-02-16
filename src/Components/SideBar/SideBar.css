@@ -19,3 +19,8 @@
     font-family: "Roboto", sans-serif;
 }
 
+@media (max-width:800px) {
+    .sidebar-container {
+        display: none;
+    }
+}

@@ -4,6 +4,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
 }
 
 :root {
@@ -13,7 +14,6 @@
 .App {
   height: 100%;
   display: flex;
-  font-family: "Roboto", sans-serif;
   flex-direction: column;
   background-color: #dae0e6;
 }

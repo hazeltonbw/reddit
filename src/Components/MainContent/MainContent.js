@@ -29,8 +29,8 @@ export default function MainContent() {
         <main className="main">
             <section className="posts">
                 {
-                posts.map((post) => {
-                    return <Post data={post.data}/>
+                posts.map((post, index) => {
+                    return <Post key={index} data={post.data}/>
                 })
                 }
             </section>
