@@ -19,7 +19,7 @@ function format(n) {
 }
 
 export default function Post({data}) {
-    console.log(data)
+    //console.log(data)
     return (
         <article className="post">
             <div className="vote">
