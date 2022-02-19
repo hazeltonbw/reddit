@@ -19,12 +19,23 @@ function format(n) {
 }
 
 export default function Post({data}) {
-    //console.log(data)
+    console.log(data)
+    let pic = "";
+    if (data.media_metadata) 
+        for (const property in data.media_metadata) 
+            pic = data.media_metadata[property].s.u;
+    if(pic.length > 0) 
+        pic.replaceAll('&amp;', '&');
+    //console.log(pic.length)
+    //console.log(data.url !== undefined);
+    //console.log(data.post_hint)
     return (
         <article className="post">
             <div className="vote">
                 <img src={upvote} alt="Upvote" className='upvote'/>
                 <span className='score'>{format(data.score)}</span>
+                <img src={upvote} alt="Downvote" className='downvote'/>
+
             </div>
             <div className="content">
                 <div className="post-info">
@@ -37,12 +48,24 @@ export default function Post({data}) {
                     <span className="sep"></span>
                     <span>{moment.unix(data.created_utc).fromNow()}</span>
                     <h3 className='post-title'>{data.title}</h3>
-                <img src={data.url} alt="" className='post-img'/>
+                    {data.is_video
+                    ? <video className='post-media' controls src={data.media.reddit_video.fallback_url}></video> 
+                    : null}
+                    
+                    {data && data.url.includes('gifv') 
+                    ? <video controls type='mp4' src={data.url.slice(0,-5) + '.mp4'}></video>
+                    : null
+                    }
+                { pic && data.post_hint === "image"
+                ? <img src={pic} alt="" className='post-media'/>
+                : <img src={data.url} alt="" className='post-media' />
+                }
             </div>
 
             <div className="more-info">
                 <img src={upvote} alt="Upvote" className='upvote upvote-secondary'/>
                 <span className='upvote-secondary score'>{format(data.score)}</span>
+                {/* <img src={upvote} alt="Downvote" className='downvote downvote-secondary'/> */}
             <a href={"https://www.reddit.com" + data.permalink}>{format(data.num_comments)}</a><span>&nbsp;Comments</span>
             </div>
                 

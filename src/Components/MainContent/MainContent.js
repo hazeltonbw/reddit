@@ -1,26 +1,29 @@
 import React, { useEffect, useState } from "react";
 import "./MainContent.css";
 import Post from "../Post/Post";
+import "./MainContentSkeleton";
+import MainContentSkeleton from "./MainContentSkeleton";
 
 export default function MainContent() {
-    const [posts, setPosts] = useState([]);
-
+    const [posts, setPosts] = useState(null);
     const fetchData = async () => {
-        let posts, jsonPosts;
-        try {
-            posts = await fetch('https://www.reddit.com/r/popular.json');
-            if (posts.ok) {
-                //console.log("ok");
-                jsonPosts = await posts.json();
-                //console.log(jsonPosts.data.children)
-                setPosts(jsonPosts.data.children);
-            }
-            else {
-                console.log("something went wrong")
-            }
-        } catch(err){
-            console.log(err);
-        }
+        setTimeout(async ()  => {
+            let c, jsonPosts;
+            try {
+                c = await fetch('https://www.reddit.com/r/popular.json');
+                if (c.ok) {
+                    //console.log("ok");
+                    jsonPosts = await c.json();
+                    //console.log(jsonPosts.data.children)
+                    setPosts(jsonPosts.data.children);
+                }
+                else {
+                    console.log("something went wrong")
+                }
+            } catch(err){
+                console.log(err);
+            }       
+        }, 5000);
     }
     useEffect(() => {
         fetchData();
@@ -28,11 +31,12 @@ export default function MainContent() {
     return (
         <main className="main">
             <section className="posts">
-                {
-                posts.map((post, index) => {
-                    return <Post key={index} data={post.data}/>
-                })
-                }
+                {posts && posts.map((post, index) => (
+                            <Post key={index} data={post.data}/>
+                ))}
+
+         {/* else, render the skeleton  */}
+        {!posts && <MainContentSkeleton />}
             </section>
         </main>
     )
