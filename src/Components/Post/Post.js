@@ -65,7 +65,7 @@ export default function Post({data}) {
                         }
 
                         {   !pic && !data.is_video 
-                            ? <a href={data.url} target="_blank">{data.url}</a> 
+                            ? <a className='post-link' href={data.url} target="_blank">{data.url}</a> 
                             : null
                         }
 
