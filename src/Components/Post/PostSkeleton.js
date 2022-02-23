@@ -13,7 +13,7 @@ export default function PostSkeleton() {
                 <span className='skeleton score'></span>
                 <img src={upvote} alt="Downvote" className='downvote'/>
             </div>
-            <div className="content">
+            <div className="skeleton content">
                 <div className="skeleton post-info">
                     <span className="skeleton sep loading"></span>
                     <span className="skeleton sep loading"></span>

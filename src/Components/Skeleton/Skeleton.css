@@ -1,4 +1,4 @@
-.content {
+.skeleton.content {
     width: 60vw;
 }
 
@@ -51,8 +51,9 @@
 }
 
 .skeleton.skel-img {
+    height: 33vh;
+    max-width: 540px;
     width: 90%;
-    height: 30vh;
     margin: 20px auto;
     padding: 0px 10px;
     cursor: progress;
@@ -75,3 +76,8 @@
     }
   }
   
+  @media (max-width:800px) {
+    .skeleton.content {
+        width: 90vw;
+    }
+}
