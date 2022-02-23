@@ -8,6 +8,10 @@
     max-width: 594px;
 }
 
+.post:last-child {
+    margin: 0;
+}
+
 .post:hover {
     border: 1px solid rgba(129, 131, 132, 1);
 }
@@ -47,8 +51,7 @@
 .post-media {
     display: block;
     max-width: 594px;
-    height: auto;
-    width: 90%;
+    width: 100%;
     margin: 0px auto;
 }
 .vote {
