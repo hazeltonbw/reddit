@@ -46,15 +46,15 @@ export default function MainContent() {
         <main className="main">
             <section className="posts">
                 {posts && posts.map((post, index) => (
-                            <Post key={index} data={post.data}/>
+                    <Post key={index} data={post.data}/>
                 ))}
 
          {/* else, render the skeleton  */}
-        {!posts && (
-            <AnimatedList animation="zoom">
-                {Array(getRandomInt(5,10)).fill(<PostSkeleton />)}
-            </AnimatedList>
-        )}
+                {!posts && (
+                    <AnimatedList animation="zoom">
+                        {Array(getRandomInt(5,10)).fill(<PostSkeleton />)}
+                    </AnimatedList>
+                )}
             </section>
         </main>
     )

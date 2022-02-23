@@ -39,11 +39,11 @@ export default function Post({data}) {
             <div className="content">
                 <div className="post-info">
                     {/* TODO: Avatar */}
-                    <a href={"https://www.reddit.com/r/"+data.subreddit} className="subreddit">r/{data.subreddit}</a>
+                    <a href={"https://www.reddit.com/r/"+data.subreddit} className="subreddit" target="_blank">r/{data.subreddit}</a>
                     <span className="sep">|</span>
                     <span>Posted by</span>
                     <span className="sep"></span>
-                    <a href={"https://www.reddit.com/user/"+data.author}>{data.author}</a>
+                    <a href={"https://www.reddit.com/user/"+data.author} target="_blank">{data.author}</a>
                     <span className="sep"></span>
                     <span>{moment.unix(data.created_utc).fromNow()}</span>
                     <h3 className='post-title'>{data.title}</h3>
@@ -60,12 +60,12 @@ export default function Post({data}) {
                         }
 
                         { pic && data.post_hint === "image"
-                            ? <img src={pic} alt={data.title} className='post-media'/>
-                            : <img src={data.url} alt={data.title} className='post-media' />
+                            ? <img src={pic} alt={data.title} className='post-media' onError={(event) => event.target.style.display = 'none'} />
+                            : <img src={data.url} alt={data.title} className='post-media' onError={(event) => event.target.style.display = 'none'} />
                         }
 
                         {   !pic && !data.is_video 
-                            ? <a href={data.url}>{data.url}</a> 
+                            ? <a href={data.url} target="_blank">{data.url}</a> 
                             : null
                         }
 
@@ -76,7 +76,7 @@ export default function Post({data}) {
                     <img src={upvote} alt="Upvote" className='upvote upvote-secondary'/>
                     <span className='upvote-secondary score'>{format(data.score)}</span>
                     {/* <img src={upvote} alt="Downvote" className='downvote downvote-secondary'/> */}
-                    <a href={"https://www.reddit.com" + data.permalink}>{format(data.num_comments)}</a><span>&nbsp;Comments</span>
+                    <a href={"https://www.reddit.com" + data.permalink} target="_blank">{format(data.num_comments)}</a><span>&nbsp;Comments</span>
                 </div>
             </div>
         </article>
