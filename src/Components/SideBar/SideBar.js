@@ -1,50 +1,56 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import "./SideBar.css";
-
-const popularSubreddits = [
-  "worldnews",
-  "Wellthatsucks",
-  "technology",
-  "therewasanattempt",
-  "Cooking",
-  "photoshopbattles",
-  "funny",
-  "videos",
-  "OldSchoolCool",
-  "Jokes",
-  "Showerthoughts",
-  "todayilearned",
-  "Damnthatsinteresting",
-  "nextfuckinglevel",
-  "gifs",
-  "aww",
-  "cats",
-  "gaming",
-  "space",
-  "AskReddit",
-  "ProgrammerHumor",
-  "memes",
-  "screenshots",
-  "food",
-  "woodworking",
-  "oddlysatisfying",
-];
+import { fetchSubreddits, selectSubreddits } from "../../store/subRedditSlice";
+import {
+  setSelectedSubreddit,
+  selectSelectedSubreddit,
+} from "../../store/redditSlice";
 
 export default function SideBar() {
-  return (
-    <div className="sidebar-container">
-      <div className="sidebar">
-        <h3 className="subreddits">Subreddits</h3>
-        {popularSubreddits.map((subreddit) => (
-          <a
-            className="subreddit"
-            href={"https://www.reddit.com/r/" + subreddit}
-            rel="noopener"
-          >
-            r\{subreddit}
-          </a>
-        ))}
+  const reddit = useSelector((state) => state.reddit);
+  const { isLoading, error } = reddit; // redditSlice status
+  const dispatch = useDispatch();
+  const subreddits = useSelector(selectSubreddits);
+  const selectedSubreddit = useSelector(selectSelectedSubreddit);
+
+  useEffect(() => {
+    dispatch(fetchSubreddits());
+  }, [dispatch]);
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+  if (error) {
+    return <div>Error...</div>;
+  }
+  if (!isLoading)
+    return (
+      <div className="sidebar-container">
+        <div className="sidebar">
+          <h2 className="subreddits-title">Subreddits</h2>
+          <ul className="subreddits-list">
+            {subreddits.map((subreddit) => (
+              <li
+                key={subreddit.id}
+                className={`${
+                  selectedSubreddit === subreddit.url
+                    ? `selected-subreddit ${subreddit.url}`
+                    : `${subreddit.url}`
+                }`}
+              >
+                <button
+                  type="button"
+                  onClick={() => {
+                    dispatch(setSelectedSubreddit(subreddit.url));
+                    window.scrollTo(0, 0);
+                  }}
+                >
+                  {subreddit.display_name}
+                </button>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
-    </div>
-  );
+    );
 }

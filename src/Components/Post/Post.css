@@ -109,6 +109,16 @@ a {
   color: var(sep);
 }
 
+/* Fixes carousel controls */
+.carousel.carousel-slider .control-prev {
+  width: auto;
+  left: 0;
+}
+.carousel.carousel-slider .control-next {
+  width: auto;
+  right: 0;
+}
+
 @media (max-width: 640px) {
   .upvote-secondary {
     display: unset;

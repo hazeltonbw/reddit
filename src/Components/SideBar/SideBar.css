@@ -1,27 +1,68 @@
 .sidebar-container {
-    padding: 20px 20px 0px 0px;
+  padding: 20px 20px 0px 0px;
 }
 
 .sidebar {
-    border: 1px solid rgb(129, 131, 132);
-    width: 30ch;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    overflow-y: auto;
-    border-radius: 0.4rem;
-    background-color: #fff;
-    position: sticky;
-    top: 0;
+  border: 1px solid rgba(129, 131, 132, 0.5);
+  width: 25ch;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  border-radius: 0.4rem;
+  background-color: #fff;
+  position: sticky;
+  top: 0;
 }
 
-.sidebar h3 {
-    margin: 5px 0px;
-    font-family: "Roboto", sans-serif;
+.sidebar:hover {
+  border: 1px solid rgba(129, 131, 132, 1);
 }
 
-@media (max-width:900px) {
-    .sidebar-container {
-        display: none;
-    }
+.subreddits-title {
+  background-color: #fdebe5;
+  color: black;
+  height: 1.5em;
+  text-align: center;
+  font-weight: 700;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  font-family: "Roboto", sans-serif;
+}
+
+ul {
+  list-style: none;
+}
+
+li {
+  padding: 2px 0px;
+}
+
+.selected-subreddit > button {
+  background-color: #ff4500;
+  color: white;
+}
+
+button {
+  border: 0;
+  width: 100%;
+  color: black;
+  padding: 0.3rem 0rem;
+  border-radius: 5px;
+  background-color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  transition: all ease 0.5s;
+}
+
+button:hover {
+  background-color: #fbb7a0;
+  color: black;
+}
+
+@media (max-width: 900px) {
+  .sidebar-container {
+    display: none;
+  }
 }
