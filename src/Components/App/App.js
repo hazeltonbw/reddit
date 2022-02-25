@@ -1,7 +1,7 @@
-import { Header } from '../Header/Header';
-import MainContent from '../MainContent/MainContent';
-import SideBar from '../SideBar/SideBar';
-import './App.css';
+import { Header } from "../Header/Header";
+import MainContent from "../MainContent/MainContent";
+import SideBar from "../SideBar/SideBar";
+import "./App.css";
 
 function App() {
   return (
@@ -11,7 +11,10 @@ function App() {
         <MainContent />
         <SideBar />
       </div>
-      <footer>Made with <span class="heart">&#10084;</span> by Brandon Hazelton &nbsp; &copy; 2021</footer>
+      <footer>
+        Made with <span class="heart">&#10084;</span> by Brandon Hazelton &nbsp;
+        &copy; 2022
+      </footer>
     </div>
   );
 }
