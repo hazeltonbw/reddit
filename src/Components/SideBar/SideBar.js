@@ -18,7 +18,7 @@ export default function SideBar() {
     dispatch(fetchSubreddits());
   }, [dispatch]);
   if (isLoading) {
-    return <div>Loading...</div>;
+    return null;
   }
   if (error) {
     return <div>Error...</div>;
