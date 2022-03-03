@@ -1,17 +1,18 @@
 .main {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .posts {
-    padding: 20px 24px;
-    width: inherit;
+  padding: 20px 24px;
+  width: inherit;
 }
 
-@media (max-width: 620px) {
-    .posts {
-        width: 96vw;
-    }
+@media (max-width: 640px) {
+  .posts {
+    width: 100%;
+    padding: 0;
+  }
 }

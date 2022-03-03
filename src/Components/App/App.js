@@ -1,7 +1,6 @@
 import { Header } from "../Header/Header";
 import MainContent from "../MainContent/MainContent";
 import SideBar from "../SideBar/SideBar";
-import Banner from "../Banner/Banner";
 import "./App.css";
 
 function App() {
@@ -9,7 +8,6 @@ function App() {
     <div className="App">
       <Header />
       <div className="container">
-        <Banner />
         <MainContent />
         <SideBar />
       </div>

@@ -25,7 +25,7 @@ export default function MainContent() {
     //fetchData();
   }, [dispatch, selectedSubreddit]);
 
-  const onToggleComments = (index) => {
+  const toggleComments = (index) => {
     const getComments = (permalink) => {
       dispatch(fetchComments(index, permalink));
     };
@@ -47,7 +47,7 @@ export default function MainContent() {
             <Post
               key={index}
               data={post}
-              onToggleComments={onToggleComments(index)}
+              toggleComments={toggleComments(index)}
             />
           ))}
 

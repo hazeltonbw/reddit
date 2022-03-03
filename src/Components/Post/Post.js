@@ -5,8 +5,39 @@ import upvote from "../../images/Upvote.svg";
 import format from "../../utils/format";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  solid,
+  regular,
+  brands,
+} from "@fortawesome/fontawesome-svg-core/import.macro"; // <-- import styles to be used
+import { useDispatch } from "react-redux";
+import { fetchComments } from "../../store/redditSlice";
+import Comment from "../Comment/Comment";
 
-export default function Post({ data }) {
+export default function Post({ data, toggleComments }) {
+  const { showingComments, loadingComments, errorComments } = data;
+  const dispatch = useDispatch();
+  console.log(data.comments);
+
+  const renderComments = () => {
+    if (errorComments) {
+      return (
+        <div>
+          <h3>Error loading comments</h3>
+        </div>
+      );
+    }
+    if (loadingComments) {
+      return <div>Loading...</div>;
+    }
+    if (showingComments) {
+      return data.comments
+        .filter((_, index) => index < 25)
+        .map((comment) => <Comment comment={comment} />);
+      //return <div>{data.comments.map((comment) => ({ comment }))}</div>;
+    }
+  };
   //console.log(data)
   //let pic = "";
   //if (data && data.media_metadata)
@@ -30,10 +61,12 @@ export default function Post({ data }) {
   //console.log(data);
   return (
     <article className="post">
-      <div className="vote">
-        <img src={upvote} alt="Upvote" className="upvote" />
-        <span className="score">{format(data.score)}</span>
-        <img src={upvote} alt="Downvote" className="downvote" />
+      <div className="vote-container">
+        <div className="vote-primary">
+          <img src={upvote} alt="Upvote" className="upvote" />
+          <span className="score">{format(data.score)}</span>
+          <img src={upvote} alt="Downvote" className="downvote" />
+        </div>
       </div>
       <div className="content">
         <div className="post-info">
@@ -47,7 +80,7 @@ export default function Post({ data }) {
           </a>
           <span className="sep">|</span>
           <span>Posted by</span>
-          <span className="sep"></span>
+          &nbsp;
           <a
             href={"https://www.reddit.com/user/" + data.author}
             target="_blank"
@@ -55,9 +88,9 @@ export default function Post({ data }) {
           >
             {data.author}
           </a>
-          <span className="sep"></span>
+          &nbsp;
           <span>{moment.unix(data.created_utc).fromNow()}</span>
-          <h3 className="post-title">{data.title}</h3>
+          <h3 className="post-title">{data.title.replaceAll("&amp;", "&")}</h3>
           <div className="media">
             {data.is_video ? (
               <video
@@ -77,7 +110,7 @@ export default function Post({ data }) {
 
             {pics.length !== 0 ? (
               <Carousel
-                dynamicHeight={true}
+                dynamicHeight={false}
                 showArrows={true}
                 showThumbs={true}
               >
@@ -92,18 +125,33 @@ export default function Post({ data }) {
         </div>
 
         <div className="more-info">
-          <img src={upvote} alt="Upvote" className="upvote upvote-secondary" />
-          <span className="upvote-secondary score">{format(data.score)}</span>
+          <div className="vote-secondary">
+            <img
+              src={upvote}
+              alt="Upvote"
+              className="upvote upvote-secondary"
+            />
+            <span className="upvote-secondary score">{format(data.score)}</span>
+            <img
+              src={upvote}
+              alt="Downvote"
+              className="downvote upvote-secondary"
+            />
+          </div>
           {/*<img src={upvote} alt="Downvote" className='downvote downvote-secondary'/>*/}
-          <a
-            href={"https://www.reddit.com" + data.permalink}
-            target="_blank"
-            rel="noopener"
+          <button
+            className="comments-button"
+            onClick={() => toggleComments(data.permalink)}
           >
             {format(data.num_comments)}
-          </a>
-          <span>&nbsp;Comments</span>
+            <FontAwesomeIcon
+              className="fa-comment"
+              size="2x"
+              icon={regular("comments")}
+            />
+          </button>
         </div>
+        <div className="comments">{renderComments()}</div>
       </div>
     </article>
   );

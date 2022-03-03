@@ -7,6 +7,10 @@
   font-family: "Roboto", sans-serif;
 }
 
+body {
+  color: #222;
+}
+
 :root {
   --sep: rgb(200, 200, 200);
 }

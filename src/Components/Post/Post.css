@@ -27,6 +27,7 @@
   flex: 9;
   max-width: 100%;
   flex-direction: column;
+  box-shadow: 2px 4px 5px rgba(0, 0, 0, 0.2);
 }
 
 .post-info {
@@ -59,7 +60,8 @@ a {
   width: 100%;
   margin: 0px auto;
 }
-.vote {
+
+.vote-container {
   flex: 1;
   display: flex;
   background-color: #fdebe5;
@@ -71,6 +73,20 @@ a {
   flex-direction: column;
 }
 
+.vote-primary {
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.vote-secondary {
+  display: flex;
+  align-items: center;
+  padding: 5px;
+  border-radius: 5px;
+}
+
 .more-info {
   border-top: 1px solid rgba(129, 131, 132, 0.2);
   padding: 5px;
@@ -80,22 +96,41 @@ a {
   align-items: center;
 }
 
+.comments {
+  color: rgba(0, 0, 0, 0.6);
+  font-size: 0.9rem;
+}
+
 .upvote-secondary,
 .downvote-secondary {
   display: none;
 }
 
-.score {
-  margin-top: 5px;
-}
 .upvote-secondary.score {
   margin-left: 3px;
   margin-right: 10px;
 }
 
+.comments-button {
+  display: flex;
+  align-items: center;
+  border-radius: 5px;
+  cursor: pointer;
+  width: fit-content;
+  padding: 5px;
+  column-gap: 5px;
+}
+
+.comments-button:active {
+  color: #ff4500;
+}
+
+.fa-comment {
+  color: #ff4500;
+}
+
 .upvote,
 .downvote {
-  margin-top: 5px;
   width: 32px;
   height: 32px;
 }
@@ -124,11 +159,17 @@ a {
     display: unset;
   }
 
+  .upvote-secondary.score {
+    margin: 0;
+    padding: 5px;
+    text-align: center;
+  }
+
   .upvote {
     margin: 0;
   }
 
-  .vote {
+  .vote-container {
     display: none;
   }
   .score {
