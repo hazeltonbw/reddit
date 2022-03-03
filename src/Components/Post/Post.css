@@ -6,6 +6,7 @@
   box-shadow: rgb(129, 131, 132);
   background-color: #ffffff;
   max-width: 594px;
+  box-shadow: 2px 4px 5px rgba(0, 0, 0, 0.2);
 }
 
 .post:last-child {
@@ -27,7 +28,6 @@
   flex: 9;
   max-width: 100%;
   flex-direction: column;
-  box-shadow: 2px 4px 5px rgba(0, 0, 0, 0.2);
 }
 
 .post-info {

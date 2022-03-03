@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import ReactMarkdown from "react-markdown";
 import moment from "moment";
 import "./Comment.css";
 
 function Comment({ comment }) {
-  console.log(comment);
+  //console.log(comment);
   return (
     <div className="comment-container">
       <div className="comment-info">
@@ -16,7 +16,7 @@ function Comment({ comment }) {
           <a
             href={"https://www.reddit.com/user/" + comment.author}
             target="_blank"
-            rel="noopener"
+            rel="noreferrer"
           >
             {comment.author}
           </a>

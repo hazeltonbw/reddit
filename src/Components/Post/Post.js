@@ -6,19 +6,11 @@ import format from "../../utils/format";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  solid,
-  regular,
-  brands,
-} from "@fortawesome/fontawesome-svg-core/import.macro"; // <-- import styles to be used
-import { useDispatch } from "react-redux";
-import { fetchComments } from "../../store/redditSlice";
+import { regular } from "@fortawesome/fontawesome-svg-core/import.macro"; // <-- import styles to be used
 import Comment from "../Comment/Comment";
 
 export default function Post({ data, toggleComments }) {
   const { showingComments, loadingComments, errorComments } = data;
-  const dispatch = useDispatch();
-  console.log(data.comments);
 
   const renderComments = () => {
     if (errorComments) {
@@ -34,16 +26,9 @@ export default function Post({ data, toggleComments }) {
     if (showingComments) {
       return data.comments
         .filter((_, index) => index < 25)
-        .map((comment) => <Comment comment={comment} />);
-      //return <div>{data.comments.map((comment) => ({ comment }))}</div>;
+        .map((comment) => <Comment comment={comment} key={comment.id} />);
     }
   };
-  //console.log(data)
-  //let pic = "";
-  //if (data && data.media_metadata)
-  //for (const property in data.media_metadata)
-  //pic = data.media_metadata[property].s.u;
-  //if (pic.length > 0) pic.replaceAll("&amp;", "&");
   let pics = [];
   if (data && data.media_metadata) {
     for (const property in data.media_metadata) {
@@ -55,10 +40,6 @@ export default function Post({ data, toggleComments }) {
       });
     }
   }
-  //console.log(pic.length)
-  //console.log(data.url !== undefined);
-  //console.log(data.post_hint)
-  //console.log(data);
   return (
     <article className="post">
       <div className="vote-container">
@@ -74,7 +55,7 @@ export default function Post({ data, toggleComments }) {
             href={"https://www.reddit.com/r/" + data.subreddit}
             className="subreddit"
             target="_blank"
-            rel="noopener"
+            rel="noreferrer"
           >
             r/{data.subreddit}
           </a>
@@ -84,7 +65,7 @@ export default function Post({ data, toggleComments }) {
           <a
             href={"https://www.reddit.com/user/" + data.author}
             target="_blank"
-            rel="noopener"
+            rel="noreferrer"
           >
             {data.author}
           </a>
@@ -116,7 +97,11 @@ export default function Post({ data, toggleComments }) {
               >
                 {pics.map((pic, index) => (
                   <div key={index}>
-                    <img className="post-media" src={pic.url} />
+                    <img
+                      className="post-media"
+                      src={pic.url}
+                      alt={data.title}
+                    />
                   </div>
                 ))}
               </Carousel>

@@ -54,7 +54,11 @@ export default function MainContent() {
         {/* else, render the skeleton  */}
         {isLoading && (
           <AnimatedList animation="zoom">
-            {Array(getRandomInt(5, 10)).fill(<PostSkeleton />)}
+            {Array(getRandomInt(5, 10))
+              .fill()
+              .map((_, index) => (
+                <PostSkeleton key={index} />
+              ))}
           </AnimatedList>
         )}
       </section>
