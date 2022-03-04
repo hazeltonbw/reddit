@@ -13,7 +13,7 @@ function App() {
       </div>
       <footer>
         Made with <span className="heart">&#10084;</span> by Brandon Hazelton
-        &nbsp; &copy; 2022
+        &copy; 2022
       </footer>
     </div>
   );

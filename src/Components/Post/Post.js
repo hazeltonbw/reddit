@@ -20,14 +20,17 @@ export default function Post({ data, toggleComments }) {
         </div>
       );
     }
+
     if (loadingComments) {
-      return <div>Loading...</div>;
+      return <div>&nbsp;&nbsp;Loading...</div>;
     }
+
     if (showingComments) {
       return data.comments
         .filter((_, index) => index < 25)
         .map((comment) => <Comment comment={comment} key={comment.id} />);
     }
+
   };
   let pics = [];
   if (data && data.media_metadata) {

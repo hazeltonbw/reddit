@@ -24,9 +24,7 @@ function Comment({ comment }) {
         &nbsp;
         <span>{moment.unix(comment.created_utc).fromNow()}</span>
       </div>
-      <div className="comment-body">
-        <ReactMarkdown>{comment.body}</ReactMarkdown>
-      </div>
+      <ReactMarkdown className="comment-body">{comment.body}</ReactMarkdown>
     </div>
   );
 }

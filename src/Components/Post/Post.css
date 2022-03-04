@@ -99,6 +99,7 @@ a {
 .comments {
   color: rgba(0, 0, 0, 0.6);
   font-size: 0.9rem;
+  max-width: 100%;
 }
 
 .upvote-secondary,
