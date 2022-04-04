@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@100;200;300;400;500;600&display=swap');
+
 .comment-container {
   /* border: 1px solid rgba(0, 0, 0, 0.6); */
   margin: 0.5rem;
@@ -16,6 +18,8 @@
 
 .comment-body {
   padding: 0.5rem;
+  
   border-radius: 0.2rem;
   background-color: #fdebe5;
+  color:black;
 }
