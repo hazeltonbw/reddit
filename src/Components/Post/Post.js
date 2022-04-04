@@ -35,6 +35,7 @@ export default function Post({ data, toggleComments }) {
   let pics = [];
   if (data && data.media_metadata) {
     for (const property in data.media_metadata) {
+      if (data.media_metadata[property].s !== undefined)
       pics.push({
         url: data.media_metadata[property].s.u.replaceAll("&amp;", "&"),
         id: data.media_metadata[property].s.id,
