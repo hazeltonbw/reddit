@@ -1,12 +1,12 @@
 .post {
   display: flex;
-  border: 1px solid rgba(129, 131, 132, 0.5);
+  /* border: 1px solid rgba(129, 131, 132, 0.5); */
   margin-bottom: 10px;
   border-radius: 0.4rem;
   box-shadow: rgb(129, 131, 132);
   background-color: #ffffff;
   max-width: 594px;
-  box-shadow: 2px 4px 5px rgba(0, 0, 0, 0.2);
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 .post:last-child {
@@ -14,7 +14,7 @@
 }
 
 .post:hover {
-  border: 1px solid rgb(255, 69, 0);
+  box-shadow: 1px 1px 5px #ff4500;
 }
 
 .post-title {

@@ -1,14 +1,13 @@
 .comment-container {
-  border: 1px solid rgba(0, 0, 0, 0.6);
+  /* border: 1px solid rgba(0, 0, 0, 0.6); */
   margin: 0.5rem;
   border-radius: 0.5rem;
-  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
   overflow: hidden;
 }
 
 .comment-container:hover {
-  border: 1px solid rgb(255, 69, 0);
-}
+  box-shadow: 1px 1px 5px #ff4500;}
 
 .comment-info {
   padding: 0.5rem;
