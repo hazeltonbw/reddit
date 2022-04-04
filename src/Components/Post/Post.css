@@ -134,8 +134,8 @@ a {
   transition: all 0.3s ease;
 }
 
-.comments-button svg:hover {
-  transform: scale(1.2);
+.comments-button:hover svg{
+  transform: scale(1.15);
 }
 
 .comments-button:active {
