@@ -1,44 +1,37 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { getSubreddits } from "../api/reddit";
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
+import { getSubreddits } from '../api/reddit'
 
 const initialState = {
   subreddits: [],
   error: false,
   isLoading: false,
-};
+}
+
+export const fetchSubreddits = createAsyncThunk(
+  'subreddits/fetchSubreddits',
+  async () => {
+    const response = await getSubreddits()
+    return response
+  },
+)
 
 const subRedditSlice = createSlice({
-  name: "subreddits",
+  name: 'subreddits',
   initialState,
-  reducers: {
-    startGetSubreddits(state) {
-      state.isLoading = true;
-      state.error = false;
-    },
-    getSubredditsSuccess(state, action) {
-      state.isLoading = false;
-      state.subreddits = action.payload;
-    },
-    getSubredditsFailed(state) {
-      state.isLoading = false;
-      state.error = true;
-    },
+  reducers: {},
+  extraReducers: (builder) => {
+    builder.addCase(fetchSubreddits.fulfilled, (state, action) => {
+      state.subreddits = action.payload
+    })
+    builder.addCase(fetchSubreddits.pending, (state) => {
+      state.isLoading = true
+    })
+    builder.addCase(fetchSubreddits.rejected, (state) => {
+      state.isLoading = false
+      state.error = true
+    })
   },
-});
+})
 
-export const { getSubredditsFailed, getSubredditsSuccess, startGetSubreddits } =
-  subRedditSlice.actions;
-
-export default subRedditSlice.reducer;
-
-export const fetchSubreddits = () => async (dispatch) => {
-  try {
-    dispatch(startGetSubreddits());
-    const subreddits = await getSubreddits();
-    dispatch(getSubredditsSuccess(subreddits));
-  } catch (err) {
-    dispatch(getSubredditsFailed());
-  }
-};
-
-export const selectSubreddits = (state) => state.subreddits.subreddits;
+export default subRedditSlice.reducer
+export const selectSubreddits = (state) => state.subreddits.subreddits
